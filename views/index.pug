@@ -2,5 +2,18 @@ extends layout
 
 block content
   h1=title
+  p by #{name}
+  table
+    tr 
+      th Firstname
+      th Lastname
+      th email
+      th age
+    each student in students
+      tr
+        td=student.firstname
+        td=student.lastname
+        td=student.email
+        td=student.age
 
 
