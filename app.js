@@ -21,7 +21,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // connect mongoDB
 mongoose.connect('mongodb://localhost:27017/webdxd', { useMongoClient:true });
 
-app.get('/', (req, res) => res.send('Hello World!'))
+app.get('/', (req, res) => res.render('index', { title: 'Welcome to Full-stack !' }))
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
