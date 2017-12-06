@@ -39,4 +39,16 @@ router.post('/update/:id', (req, res, next) => {
   })
 })
 
+//handle delete student
+router.post('/delete', (req, res, next) => {
+  Students.remove({ _id: req.body.studentId }, err => {
+    if (err){
+      res.send(err)
+    }
+    else{
+      res.json({ result: 'success' })
+    }
+  })
+})
+
 module.exports = router;
