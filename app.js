@@ -11,6 +11,11 @@ const mongoose = require('mongoose');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+//router setup
+const index = require('./routes/index.js');
+
+app.use('/', index);
+
 //middleware
 app.use(logger('dev')); // log requests in server console
 app.use(bodyParser.json()); // parse client request data to json format
@@ -20,8 +25,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // connect mongoDB
 mongoose.connect('mongodb://localhost:27017/webdxd', { useMongoClient:true });
-
-app.get('/', (req, res) => res.render('index', { title: 'Welcome to Full-stack !' }))
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
