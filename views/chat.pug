@@ -51,7 +51,8 @@ block style
 block content
   ul#messages
   form(action="")
-    input#m(autocomplete="off" required)
+    input#user(type="text" placeholder="user" style="margin-bottom: 10px;" required)
+    input#m(type="text" required)
     button Send
 
 block script
@@ -63,9 +64,9 @@ block script
 
     $('form').submit(function(e) {
       e.preventDefault();
-      socket.emit('chat message', { message: $('#m').val() });
+      socket.emit('chat message', { color, message: $('#m').val(), user: $('#user').val() });
       $('#m').val('')
     })
-    socket.on('chat broadcast', function (obj) {
-      $('#messages').append(`<li>${obj.message}</li>`);
+    socket.on('chat broadcast', (obj) => {
+      $('#messages').append(`<li style='color: ${obj.color}'>${obj.user}: ${obj.message}</li>`);
     })
