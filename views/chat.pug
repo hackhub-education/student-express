@@ -50,6 +50,8 @@ block style
 
 block content
   ul#messages
+    each message in messages
+      li(style=`color: ${message.color}`) #{message.user}: #{message.message}
   form(action="")
     input#user(type="text" placeholder="user" style="margin-bottom: 10px;" required)
     input#m(type="text" required)

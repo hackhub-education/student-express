@@ -20,8 +20,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/scripts', express.static(`${__dirname}/node_modules/`));
 
 //router setup
-const index = require('./routes/index.js');
-const students = require('./routes/students.js');
+const index = require('./routes/index');
+const students = require('./routes/students');
 const chat = require('./routes/chat');
 
 app.use('/', index);
@@ -30,6 +30,7 @@ app.use('/chat', chat);
 
 // connect mongoDB
 mongoose.connect('mongodb://localhost:27017/webdxd', { useMongoClient:true });
+mongoose.Promise = global.Promise
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
