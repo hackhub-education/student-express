@@ -22,9 +22,11 @@ app.use('/scripts', express.static(`${__dirname}/node_modules/`));
 //router setup
 const index = require('./routes/index.js');
 const students = require('./routes/students.js');
+const chat = require('./routes/chat');
 
 app.use('/', index);
 app.use('/students', students);
+app.use('/chat', chat);
 
 // connect mongoDB
 mongoose.connect('mongodb://localhost:27017/webdxd', { useMongoClient:true });
@@ -61,9 +63,7 @@ const server = http.createServer(app);
  */
 const io = require('socket.io')(server);
 
-io.on('connection', (socket) => {
-  console.log('connected');
-});
+require('./socket')(io);
 
 /**
  * Listen on provided port, on all network interfaces.
