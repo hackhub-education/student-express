@@ -17,6 +17,13 @@ block content
         td=student.email
         td=student.age
   br
-  a(href='/students/add') Add Student 
+  a(href='/students/add') Add Student
+
+block script
+  script(src="/scripts/socket.io-client/dist/socket.io.js")
+  script.
+    const socket = io();
+
+
 
 

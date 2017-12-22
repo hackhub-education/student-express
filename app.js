@@ -17,6 +17,7 @@ app.use(bodyParser.json()); // parse client request data to json format
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/scripts', express.static(`${__dirname}/node_modules/`));
 
 //router setup
 const index = require('./routes/index.js');
@@ -54,6 +55,15 @@ app.set('port', port);
  * Create HTTP server.
  */
 const server = http.createServer(app);
+
+/**
+ * socket.io config.
+ */
+const io = require('socket.io')(server);
+
+io.on('connection', (socket) => {
+  console.log('connected');
+});
 
 /**
  * Listen on provided port, on all network interfaces.
