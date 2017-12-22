@@ -59,6 +59,8 @@ block script
   script(src="/scripts/socket.io-client/dist/socket.io.js")
   script.
     const socket = io();
+    const color = `#${(0x1000000 + (Math.random()) * 0xffffff).toString(16).substr(1, 6)}` ;
+
     $('form').submit(function(e) {
       e.preventDefault();
       socket.emit('chat message', { message: $('#m').val() });
