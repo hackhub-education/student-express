@@ -7,7 +7,11 @@ router.get('/', (req, res, next) => {
     if(err) {
       next(err)
     } else {
-      res.render('chat', { messages })
+      if(req.user){
+        res.render('chat', { user: req.user, messages })
+      } else {
+        res.redirect('/user/login')
+      }
     }
   })
 });

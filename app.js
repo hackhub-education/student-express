@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const http = require('http');
 const mongoose = require('mongoose');
+const session = require('express-session')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -18,15 +19,36 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/scripts', express.static(`${__dirname}/node_modules/`));
+app.use(session({
+  secret: 'webdxd',
+  // resave: false,
+  // saveUninitialized: true,
+  // cookie: { secure: true }
+}));
+
+// user auth
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+// passport config
+const Account = require('./models/students');
+passport.use(new LocalStrategy(Account.authenticate()));
+passport.serializeUser(Account.serializeUser());
+passport.deserializeUser(Account.deserializeUser());
 
 //router setup
 const index = require('./routes/index');
 const students = require('./routes/students');
 const chat = require('./routes/chat');
+const user = require('./routes/user');
 
 app.use('/', index);
 app.use('/students', students);
 app.use('/chat', chat);
+app.use('/user', user);
 
 // connect mongoDB
 mongoose.connect('mongodb://localhost:27017/webdxd', { useMongoClient:true });
