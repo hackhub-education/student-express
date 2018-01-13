@@ -13,7 +13,7 @@ module.exports = (io) => {
           io.emit('chat broadcast', obj)
         }
       })
-    })
+    });
 
     socket.on('send id', (user) => {
       onlineUsers.push(user);
@@ -25,6 +25,6 @@ module.exports = (io) => {
         onlineUsers.splice(userIndex, 1);
         io.emit('send users', onlineUsers)
       })
-    })
+    });
   });
 }
