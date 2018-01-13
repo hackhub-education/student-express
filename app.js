@@ -23,7 +23,7 @@ app.use(session({
   secret: 'webdxd',
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: true }
+  cookie: { secure: false } // only set this to true if you are in HTTPS connection
 }));
 
 // user auth
