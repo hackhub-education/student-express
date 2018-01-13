@@ -72,8 +72,6 @@ block content
   #userList
     h2 Online Users
     ul
-      li Michael
-      li ET
   form(action="")
     input#m(type="text" required)
     button Send
@@ -86,6 +84,17 @@ block script
     const color = `#${(0x1000000 + (Math.random()) * 0xffffff).toString(16).substr(1, 6)}` ;
     const user = !{JSON.stringify(user)};
   
+    socket.on('connect', () => {
+      socket.emit('send id', user)
+    })
+
+    socket.on('send users', (users) => {
+      $('#userList ul').empty();
+      users.forEach((user) => {
+        $('#userList ul').append(`<li>${user.username}</li>`)
+      })
+    })
+
     $('form').submit(function(e) {
       e.preventDefault();
       socket.emit('chat message', { color, message: $('#m').val(), user: user.username });
