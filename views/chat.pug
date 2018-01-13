@@ -35,12 +35,12 @@ block style
     }
 
     #messages {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
+      width: 80%;
+      float: left;
+
     }
 
-    #messages li {
+    li {
       padding: 5px 10px;
     }
 
@@ -48,13 +48,32 @@ block style
       background: #eee;
     }
 
+    #userList {
+      width:20%;
+      float: right;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
 block content
   if (user)
     p#username=user.username
     a(href='/user/logout') Logout
-  ul#messages
-    each message in messages
-      li(style=`color: ${message.color}`) #{message.user}: #{message.message}
+  #messageList
+    ul#messages
+      each message in messages
+        li(style=`color: ${message.color}`) #{message.user}: #{message.message}
+  #userList
+    h2 Online Users
+    ul
+      li Michael
+      li ET
   form(action="")
     input#m(type="text" required)
     button Send
