@@ -22,7 +22,7 @@ app.use('/scripts', express.static(`${__dirname}/node_modules/`));
 app.use(session({
   secret: 'webdxd',
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false,
   cookie: { secure: false } // only set this to true if you are in HTTPS connection
 }));
 
