@@ -39,6 +39,9 @@ passport.use(new LocalStrategy(Account.authenticate()));
 passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
 
+// graphql
+require('./apollo')(app);
+
 //router setup
 const index = require('./routes/index');
 const students = require('./routes/students');
