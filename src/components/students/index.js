@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { map } from 'lodash';
+import { Link } from 'react-router-dom';
 
 import Student from './Student';
 
@@ -42,7 +43,7 @@ class Students extends Component {
           </tbody>
         </table>
 
-        <Link to='student/create'>Add student</Link>
+        <Link to='/react/student/add'>Add student</Link>
       </div>
     );
   }

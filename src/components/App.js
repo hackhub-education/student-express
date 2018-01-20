@@ -10,7 +10,7 @@ class App extends Component {
       <Router>
         <Switch>
           <Route exact path="/react" exact component={Students}/>
-          <Route exact path="/react" exact component={AddStudent}/>
+          <Route exact path="/react/student/add" exact component={AddStudent}/>
           <Route render={() => (<div>404</div>)}/>
         </Switch>
       </Router>

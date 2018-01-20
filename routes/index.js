@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
   });
 });
 
-router.get('/react', (req, res) => {
+router.get('/react*', (req, res) => {
   res.render('react')
 });
 
