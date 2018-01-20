@@ -18,6 +18,17 @@ router.get('/all', (req, res, next) => {
   });
 })
 
+//handle get all students
+router.get('/detail/:id', (req, res, next) => {
+  Students.findById(req.params.id, (err, students) => {
+    if (err) {
+      res.send(err)
+    } else {
+      res.json(students);
+    }
+  });
+})
+
 //render student detail page
 router.get('/:id', (req, res, next) => {
   Students.findById(req.params.id, (err, student) =>{

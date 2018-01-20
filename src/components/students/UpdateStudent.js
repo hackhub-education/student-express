@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { map, omit } from 'lodash';
-import { Redirect } from 'react-router-dom';
+import { map, omit, pick } from 'lodash';
+import { withRouter, Redirect } from 'react-router-dom';
 
-class AddStudent extends Component {
+class UpdateStudent extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,6 +15,19 @@ class AddStudent extends Component {
     };
   }
 
+  componentWillMount() {
+    const id = this.props.match.params.id;
+    axios.get(`http://localhost:3000/students/detail/${id}`)
+      .then(res => {
+        this.setState(pick(res.data, [
+          'firstname',
+          'lastname',
+          'email',
+          'age',
+        ]))
+      });
+  }
+
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value} );
   }
@@ -22,10 +35,10 @@ class AddStudent extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(omit(this.state, ['redirect']));
+    const id = this.props.match.params.id;
 
     axios.post(
-      'http://localhost:3000/students/add',
+      `http://localhost:3000/students/update/${id}`,
       omit(this.state, ['redirect'])
     ).then(() => {
       this.setState({ redirect: true });
@@ -53,4 +66,4 @@ class AddStudent extends Component {
   }
 }
 
-export default AddStudent;
+export default withRouter(UpdateStudent);
