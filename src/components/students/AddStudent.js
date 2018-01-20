@@ -45,7 +45,7 @@ class AddStudent extends Component {
         <label>Email</label><br/>
         <input value={email} name='email' type='email' onChange={this.handleChange} /><br/>
         <label>Age</label><br/>
-        <input value={age} name='age' type='age' onChange={this.handleChange} /><br/>
+        <input value={age} name='age' type='number' onChange={this.handleChange} /><br/>
         <button>submit</button>
       </form>
     );
