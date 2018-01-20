@@ -24176,7 +24176,6 @@ var Students = function (_Component) {
           'tbody',
           null,
           (0, _lodash.map)(students, function (s) {
-            console.log(s);
             return _react2.default.createElement(
               'tr',
               { key: s._id },

@@ -24,20 +24,20 @@ class Students extends Component {
       <table>
         <thead>
           <tr>
-            <th> username </th>
             <th> firstname </th>
             <th> lastname </th>
             <th> email </th>
+            <th> age </th>
           </tr>
         </thead>
         <tbody>
           { map(students, s => {
             return (
               <tr key={s._id}>
-                <td> {s.username} </td>
                 <td> {s.firstname} </td>
                 <td> {s.lastname} </td>
                 <td> {s.email} </td>
+                <td> {s.age} </td>
               </tr>
             )
           }) }
