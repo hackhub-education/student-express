@@ -7,6 +7,17 @@ router.get('/add', (req, res, next) => {
   res.render('add');
 })
 
+//handle get all students
+router.get('/all', (req, res, next) => {
+  Students.find({}, (err, students) => {
+    if (err) {
+      res.send(err)
+    } else {
+      res.json(students);
+    }
+  });
+})
+
 //render student detail page
 router.get('/:id', (req, res, next) => {
   Students.findById(req.params.id, (err, student) =>{
