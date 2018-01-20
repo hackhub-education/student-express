@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { map } from 'lodash';
 
+import Student from './Student';
+
 class Students extends Component {
   constructor(props) {
     super(props);
@@ -24,21 +26,16 @@ class Students extends Component {
       <table>
         <thead>
           <tr>
-            <th> username </th>
             <th> firstname </th>
             <th> lastname </th>
             <th> email </th>
+            <th> age </th>
           </tr>
         </thead>
         <tbody>
           { map(students, s => {
             return (
-              <tr key={s._id}>
-                <td> {s.username} </td>
-                <td> {s.firstname} </td>
-                <td> {s.lastname} </td>
-                <td> {s.email} </td>
-              </tr>
+              <Student key={s._id} student={s} />
             )
           }) }
         </tbody>

@@ -24104,6 +24104,10 @@ var _axios2 = _interopRequireDefault(_axios);
 
 var _lodash = __webpack_require__(103);
 
+var _Student = __webpack_require__(106);
+
+var _Student2 = _interopRequireDefault(_Student);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -24153,11 +24157,6 @@ var Students = function (_Component) {
             _react2.default.createElement(
               'th',
               null,
-              ' username '
-            ),
-            _react2.default.createElement(
-              'th',
-              null,
               ' firstname '
             ),
             _react2.default.createElement(
@@ -24169,6 +24168,11 @@ var Students = function (_Component) {
               'th',
               null,
               ' email '
+            ),
+            _react2.default.createElement(
+              'th',
+              null,
+              ' age '
             )
           )
         ),
@@ -24176,39 +24180,7 @@ var Students = function (_Component) {
           'tbody',
           null,
           (0, _lodash.map)(students, function (s) {
-            console.log(s);
-            return _react2.default.createElement(
-              'tr',
-              { key: s._id },
-              _react2.default.createElement(
-                'td',
-                null,
-                ' ',
-                s.username,
-                ' '
-              ),
-              _react2.default.createElement(
-                'td',
-                null,
-                ' ',
-                s.firstname,
-                ' '
-              ),
-              _react2.default.createElement(
-                'td',
-                null,
-                ' ',
-                s.lastname,
-                ' '
-              ),
-              _react2.default.createElement(
-                'td',
-                null,
-                ' ',
-                s.email,
-                ' '
-              )
-            );
+            return _react2.default.createElement(_Student2.default, { key: s._id, student: s });
           })
         )
       );
@@ -42256,6 +42228,63 @@ module.exports = function(module) {
 	return module;
 };
 
+
+/***/ }),
+/* 106 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Student = function Student(props) {
+  var student = props.student;
+
+
+  return _react2.default.createElement(
+    'tr',
+    null,
+    _react2.default.createElement(
+      'td',
+      null,
+      ' ',
+      student.firstname,
+      ' '
+    ),
+    _react2.default.createElement(
+      'td',
+      null,
+      ' ',
+      student.lastname,
+      ' '
+    ),
+    _react2.default.createElement(
+      'td',
+      null,
+      ' ',
+      student.email,
+      ' '
+    ),
+    _react2.default.createElement(
+      'td',
+      null,
+      ' ',
+      student.age,
+      ' '
+    )
+  );
+};
+
+exports.default = Student;
 
 /***/ })
 /******/ ]);
