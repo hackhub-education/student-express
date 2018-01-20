@@ -23,23 +23,27 @@ class Students extends Component {
     if (!students.length) return null;
 
     return (
-      <table>
-        <thead>
-          <tr>
-            <th> firstname </th>
-            <th> lastname </th>
-            <th> email </th>
-            <th> age </th>
-          </tr>
-        </thead>
-        <tbody>
-          { map(students, s => {
-            return (
-              <Student key={s._id} student={s} />
-            )
-          }) }
-        </tbody>
-      </table>
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th> firstname </th>
+              <th> lastname </th>
+              <th> email </th>
+              <th> age </th>
+            </tr>
+          </thead>
+          <tbody>
+            { map(students, s => {
+              return (
+                <Student key={s._id} student={s} />
+              )
+            }) }
+          </tbody>
+        </table>
+
+        <Link to='student/create'>Add student</Link>
+      </div>
     );
   }
 }
