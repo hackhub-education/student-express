@@ -42426,7 +42426,7 @@ var AddStudent = function (_Component) {
           'Age'
         ),
         _react2.default.createElement('br', null),
-        _react2.default.createElement('input', { value: age, name: 'age', type: 'age', onChange: this.handleChange }),
+        _react2.default.createElement('input', { value: age, name: 'age', type: 'number', onChange: this.handleChange }),
         _react2.default.createElement('br', null),
         _react2.default.createElement(
           'button',
@@ -42499,6 +42499,16 @@ var UpdateStudent = function (_Component) {
       });
     };
 
+    _this.handleDelete = function (e) {
+      var id = _this.props.match.params.id;
+
+      _axios2.default.post('http://localhost:3000/students/delete', { studentId: id }).then(function (res) {
+        if (res.data.result === 'success') {
+          _this.setState({ redirect: true });
+        }
+      });
+    };
+
     _this.state = {
       firstname: '',
       lastname: '',
@@ -42567,12 +42577,17 @@ var UpdateStudent = function (_Component) {
           'Age'
         ),
         _react2.default.createElement('br', null),
-        _react2.default.createElement('input', { value: age, name: 'age', type: 'age', onChange: this.handleChange }),
+        _react2.default.createElement('input', { value: age, name: 'age', type: 'number', onChange: this.handleChange }),
         _react2.default.createElement('br', null),
         _react2.default.createElement(
           'button',
           null,
           'submit'
+        ),
+        _react2.default.createElement(
+          'button',
+          { type: 'button', onClick: this.handleDelete },
+          'Delete'
         )
       );
     }

@@ -45,6 +45,19 @@ class UpdateStudent extends Component {
     });
   }
 
+  handleDelete = (e) => {
+    const id = this.props.match.params.id;
+
+    axios.post(
+      `http://localhost:3000/students/delete`,
+      { studentId: id }
+    ).then((res) => {
+      if (res.data.result === 'success') {
+        this.setState({ redirect: true });
+      }
+    });
+  }
+
   render(){
     const { redirect, firstname, lastname, email, age } = this.state;
 
@@ -61,6 +74,7 @@ class UpdateStudent extends Component {
         <label>Age</label><br/>
         <input value={age} name='age' type='number' onChange={this.handleChange} /><br/>
         <button>submit</button>
+        <button type="button" onClick={this.handleDelete}>Delete</button>
       </form>
     );
   }
