@@ -42416,7 +42416,7 @@ var AddStudent = function (_Component) {
           'Age'
         ),
         _react2.default.createElement('br', null),
-        _react2.default.createElement('input', { value: age, name: 'age', type: 'age', onChange: this.handleChange }),
+        _react2.default.createElement('input', { value: age, name: 'age', type: 'number', onChange: this.handleChange }),
         _react2.default.createElement('br', null),
         _react2.default.createElement(
           'button',
