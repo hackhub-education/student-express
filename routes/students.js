@@ -49,6 +49,19 @@ router.post('/add', (req, res, next) => {
   })
 })
 
+//handle add new student
+router.post('/add/json', (req, res, next) => {
+  const student = new Students(req.body)
+  student.save((err, doc)=>{
+    if (err){
+      res.send(err)
+    }
+    else{
+      res.json(doc)
+    }
+  })
+})
+
 //handle update student
 router.post('/update/:id', (req, res, next) => {
   Students.update({_id:req.params.id}, { $set: req.body }, err =>{

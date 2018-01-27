@@ -3,6 +3,9 @@ import axios from 'axios';
 import { map, omit } from 'lodash';
 import { Redirect } from 'react-router-dom';
 
+import store from '../store';
+import { addStudent } from '../actions'
+
 class AddStudent extends Component {
   constructor(props) {
     super(props);
@@ -22,14 +25,8 @@ class AddStudent extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(omit(this.state, ['redirect']));
-
-    axios.post(
-      'http://localhost:3000/students/add',
-      omit(this.state, ['redirect'])
-    ).then(() => {
-      this.setState({ redirect: true });
-    });
+    store.dispatch(addStudent(this.state))
+      .then(() => this.setState({redirect: true}));
   }
 
   render(){

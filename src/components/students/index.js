@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Student from './Student';
+import { fetchStudents } from '../actions';
 
 class Students extends Component {
   constructor(props) {
@@ -13,13 +14,8 @@ class Students extends Component {
   }
 
   componentWillMount() {
-    this.props.dispatch({
-      type: 'FETCH_STUDENTS',
-    });
-    // axios.get('http://localhost:3000/students/all')
-    //   .then(res => {
-    //     this.setState({ students: res.data });
-    //   });
+    console.log(fetchStudents);
+    this.props.dispatch(fetchStudents());
   }
 
   render(){
