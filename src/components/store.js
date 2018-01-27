@@ -7,7 +7,7 @@ const rootReducer = combineReducers({
   students,
 })
 
-const store = createStore(rootReducer, {});
+const store = createStore(rootReducer);
 
 // store.dispatch({ type: 'INCREMENT' });
 // console.log(store.getState());

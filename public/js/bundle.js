@@ -44748,7 +44748,7 @@ var rootReducer = (0, _redux.combineReducers)({
   students: _students2.default
 });
 
-var store = (0, _redux.createStore)(rootReducer, {});
+var store = (0, _redux.createStore)(rootReducer);
 
 // store.dispatch({ type: 'INCREMENT' });
 // console.log(store.getState());
