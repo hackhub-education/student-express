@@ -2,24 +2,29 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { map } from 'lodash';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import Student from './Student';
 
 class Students extends Component {
   constructor(props) {
     super(props);
-    this.state = { students: [] };
+    // this.state = { students: [] };
   }
 
   componentWillMount() {
-    axios.get('http://localhost:3000/students/all')
-      .then(res => {
-        this.setState({ students: res.data });
-      });
+    this.props.dispatch({
+      type: 'FETCH_STUDENTS',
+    });
+    // axios.get('http://localhost:3000/students/all')
+    //   .then(res => {
+    //     this.setState({ students: res.data });
+    //   });
   }
 
   render(){
-    const { students } = this.state;
+    // const { students } = this.state;
+    const { students } = this.props;
 
     if (!students.length) return null;
 
@@ -49,4 +54,6 @@ class Students extends Component {
   }
 }
 
-export default Students;
+export default connect(
+  ({ students }) => ({ students })
+)(Students);

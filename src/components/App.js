@@ -39,6 +39,8 @@ class App extends Component {
   }
 }
 
-export default connect(
-  ({ counter }) => ({ counter })
-)(App);
+ export default connect(
+   ({ counter }) => ({ counter })
+ )(App);
+
+// export default App;

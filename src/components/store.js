@@ -1,20 +1,15 @@
-import { createStore } from "redux";
+import { createStore, combineReducers } from "redux";
+import counter from './reducers/counter';
+import students from './reducers/students';
 
-const initialState = {
-  counter: 0,
-};
+const rootReducer = combineReducers({
+  counter,
+  students,
+})
 
-const rootReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case 'INCREMENT':
-      return { counter: state.counter + 1 };
-    case 'DECREMENT':
-      return { counter: state.counter - 1 };
-    default:
-      return state;
-  }
-};
+const store = createStore(rootReducer, {});
 
-const store = createStore(rootReducer);
+// store.dispatch({ type: 'INCREMENT' });
+// console.log(store.getState());
 
 export default store;
