@@ -17,7 +17,7 @@ class UpdateStudent extends Component {
 
   componentWillMount() {
     const id = this.props.match.params.id;
-    axios.get(`http://localhost:3000/students/detail/${id}`)
+    axios.get(`/students/detail/${id}`)
       .then(res => {
         this.setState(pick(res.data, [
           'firstname',
@@ -38,7 +38,7 @@ class UpdateStudent extends Component {
     const id = this.props.match.params.id;
 
     axios.post(
-      `http://localhost:3000/students/update/${id}`,
+      `/students/update/${id}`,
       omit(this.state, ['redirect'])
     ).then(() => {
       this.setState({ redirect: true });
@@ -49,7 +49,7 @@ class UpdateStudent extends Component {
     const id = this.props.match.params.id;
 
     axios.post(
-      `http://localhost:3000/students/delete`,
+      `/students/delete`,
       { studentId: id }
     ).then((res) => {
       if (res.data.result === 'success') {

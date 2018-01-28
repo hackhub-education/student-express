@@ -17,7 +17,7 @@ export const decrement = {
 }
 
 export const fetchStudents = () => (dispatch, getState) => {
-  axios.get('http://localhost:3000/students/all').then(
+  axios.get('/students/all').then(
     res => {
       console.log(res);
       if (res.status === 200) {
@@ -32,7 +32,7 @@ export const fetchStudents = () => (dispatch, getState) => {
 
 export const addStudent = (values) => (dispatch, getState) => {
   return axios.post(
-    'http://localhost:3000/students/add/json',
+    '/students/add/json',
     omit(values, ['redirect'])
   ).then((res) => {
     if (res.status === 200) {
