@@ -10,12 +10,12 @@ module.exports = {
     rules: [
       {
         test: /\.(jsx|js)?$/,
-        use: [{
+        use: {
           loader: "babel-loader",
           options: {
             presets: ['react', 'es2015'] // Transpiles JSX and ES6
           }
-        }]
+        }
       }
     ]
   },
