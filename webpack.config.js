@@ -7,12 +7,16 @@ module.exports = {
     path: path.resolve(__dirname, 'public/js')
   },
   module: {
-    loaders: [
+    rules: [
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loaders: ['babel-loader?presets[]=react,presets[]=es2015,presets[]=stage-0'],
+        test: /\.(jsx|js)?$/,
+        use: [{
+          loader: "babel-loader",
+          options: {
+            presets: ['react', 'es2015'] // Transpiles JSX and ES6
+          }
+        }]
       }
-    ],
+    ]
   },
 };
