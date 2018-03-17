@@ -13,7 +13,6 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 //middleware
-app.use(logger('dev')); // log requests in server console
 app.use(bodyParser.json()); // parse client request data to json format
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -25,6 +24,7 @@ app.use(session({
   saveUninitialized: false,
   cookie: { secure: false } // only set this to true if you are in HTTPS connection
 }));
+app.use(logger('dev')); // log requests in server console
 
 // user auth
 const passport = require('passport');
